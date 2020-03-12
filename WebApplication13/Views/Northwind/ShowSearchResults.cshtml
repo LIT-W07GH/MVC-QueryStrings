@@ -1,0 +1,42 @@
+﻿@using WebApplication13.Models
+@model SearchResultsViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container" style="margin-top: 40px;">
+    <div class="row">
+        <form action="/northwind/ShowSearchResults">
+            <div class="col-md-10">
+                <input value="@Model.SearchText" name="searchtext" type="text" class="form-control input-lg" placeholder="Search products" />
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary btn-block">Search</button>
+            </div>
+        </form>
+    </div>
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Unit Price</th>
+            <th>Quantity per Unit</th>
+        </tr>
+        @foreach (Product product in Model.Products)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.UnitPrice.ToString("C")</td>
+                <td>@product.QuantityPerUnit</td>
+            </tr>
+        }
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿@using WebApplication13.Models
+@model OrdersViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Orders</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" style="margin-top: 40px;">
+        <h1>@Model.CurrentDate.ToLongDateString()</h1>
+        <table class="table table-hover table-striped table-bordered">
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Ship Name</th>
+                <th>Ship Address</th>
+            </tr>
+            @foreach (Order order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.OrderDate.ToShortDateString()</td>
+                    <td>@order.ShipName</td>
+                    <td>@order.ShipAddress</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</body>
+</html>

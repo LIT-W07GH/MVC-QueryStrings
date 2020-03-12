@@ -1,0 +1,35 @@
+﻿@using WebApplication13.Models
+@model List<WebApplication13.Models.Order>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OrderDetails</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" style="margin-top: 40px;">
+        <table class="table table-hover table-striped table-bordered">
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Ship Name</th>
+                <th>Ship Address</th>
+                <th>Ship Country</th>
+            </tr>
+            @foreach (Order order in Model)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.OrderDate.ToShortDateString()</td>
+                    <td>@order.ShipName</td>
+                    <td>@order.ShipAddress</td>
+                    <td>@order.ShipCountry</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
